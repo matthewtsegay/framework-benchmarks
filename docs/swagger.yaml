@@ -1,0 +1,44 @@
+basePath: /
+definitions:
+  models.Product:
+    properties:
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      price:
+        type: number
+      quantity:
+        type: integer
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a market CRUD API.
+  title: Go Market API
+  version: "1.0"
+paths:
+  /products:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Product
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/models.Product'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Product'
+      summary: Create product
+      tags:
+      - products
+swagger: "2.0"
